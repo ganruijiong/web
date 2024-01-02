@@ -1,0 +1,55 @@
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <script src="https://unpkg.com/vue@next"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css">
+    <script src="https://unpkg.com/element-plus"></script>
+    <script src="./markdown.min.js"></script>
+    <title>blog</title>
+    <link rel="stylesheet" type="text/css" href="index.css" />
+</head>
+<body>
+<div id="app">
+    <el-menu style="height: 6vh" :default-active="activeIndex" class="el-menu-demo" mode="horizontal" :ellipsis="false" @select="handleSelect">
+        <el-menu-item index="0">
+            <img style="width: 100px" src="https://element-plus.org/images/element-plus-logo.svg" alt="Element logo"/>
+        </el-menu-item>
+        <el-sub-menu index="1">
+            <template #title>Workspace</template>
+            <el-menu-item index="2-1">item one</el-menu-item>
+            <el-menu-item index="2-2">item two</el-menu-item>
+            <el-menu-item index="2-3">item three</el-menu-item>
+            <el-sub-menu index="2-4">
+                <template #title>item four</template>
+                <el-menu-item index="2-4-1">item one</el-menu-item>
+                <el-menu-item index="2-4-2">item two</el-menu-item>
+                <el-menu-item index="2-4-3">item three</el-menu-item>
+            </el-sub-menu>
+        </el-sub-menu>
+    </el-menu>
+    <el-row class="tac">
+        <el-col :span="4">
+            <el-menu  style="height: 94vh;" default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
+                <el-scrollbar height="94vh">
+                    <el-sub-menu index="1">
+                        <template #title>微服务</template>
+                        <el-menu-item index="1-1" @click="getArticle('SpringCloud')">SpringCloud</el-menu-item>
+                    </el-sub-menu>
+                    <el-sub-menu index="2">
+                        <template #title>中间件</template>
+                        <el-menu-item index="2-1" @click="getArticle('Redis')">Redis</el-menu-item>
+                    </el-sub-menu>
+                </el-scrollbar>
+            </el-menu>
+        </el-col>
+        <el-col :span="20">
+            <el-scrollbar>
+                <div v-html="content"></div>
+            </el-scrollbar>
+        </el-col>
+    </el-row>
+</div>
+<script src="index.js"></script>
+</body>
+</html>
